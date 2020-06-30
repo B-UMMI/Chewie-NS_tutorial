@@ -1,0 +1,283 @@
+
+		Mon Jun 29 2020
+14:52:14 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+14:52:15   plain version 1.1.3230 from OpenLink Software
+14:52:15   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+14:52:15   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+14:52:15 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+14:52:15   plain version 1.0.3230 from OpenLink Software
+14:52:15   Cartographic Projections support based on Frank Warmerdam's proj4 library
+14:52:15   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+14:52:15 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+14:52:15   ShapefileIO version 0.1virt71 from OpenLink Software
+14:52:15   Shapefile support based on Frank Warmerdam's Shapelib
+14:52:15   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+14:52:15 OpenLink Virtuoso Universal Server
+14:52:15 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+14:52:15 uses OpenSSL 1.0.2s  28 May 2019
+14:52:15 uses parts of PCRE, Html Tidy
+14:52:15 Database version 3126
+14:52:15 SQL Optimizer enabled (max 1000 layouts)
+14:52:16 Compiler unit is timed at 0.000205 msec
+14:52:18 Roll forward started
+14:52:18 Roll forward complete
+14:52:20 Checkpoint started
+14:52:21 Checkpoint finished, log reused
+14:52:21 Server exiting
+
+		Mon Jun 29 2020
+14:52:21 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+14:52:21   plain version 1.1.3230 from OpenLink Software
+14:52:21   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+14:52:21   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+14:52:21 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+14:52:22   plain version 1.0.3230 from OpenLink Software
+14:52:22   Cartographic Projections support based on Frank Warmerdam's proj4 library
+14:52:22   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+14:52:22 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+14:52:22   ShapefileIO version 0.1virt71 from OpenLink Software
+14:52:22   Shapefile support based on Frank Warmerdam's Shapelib
+14:52:22   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+14:52:22 OpenLink Virtuoso Universal Server
+14:52:22 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+14:52:22 uses OpenSSL 1.0.2s  28 May 2019
+14:52:22 uses parts of PCRE, Html Tidy
+14:52:22 Database version 3126
+14:52:22 SQL Optimizer enabled (max 1000 layouts)
+14:52:23 Compiler unit is timed at 0.000241 msec
+14:52:24 Roll forward started
+14:52:24     3 transactions, 185 bytes replayed (100 %)
+14:52:24 Roll forward complete
+14:52:24 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+14:52:26 Checkpoint started
+14:52:28 Checkpoint finished, log reused
+14:52:28 Server exiting
+
+		Mon Jun 29 2020
+14:52:28 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+14:52:28   plain version 1.1.3230 from OpenLink Software
+14:52:28   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+14:52:28   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+14:52:28 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+14:52:28   plain version 1.0.3230 from OpenLink Software
+14:52:28   Cartographic Projections support based on Frank Warmerdam's proj4 library
+14:52:28   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+14:52:28 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+14:52:28   ShapefileIO version 0.1virt71 from OpenLink Software
+14:52:28   Shapefile support based on Frank Warmerdam's Shapelib
+14:52:28   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+14:52:28 OpenLink Virtuoso Universal Server
+14:52:28 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+14:52:28 uses OpenSSL 1.0.2s  28 May 2019
+14:52:28 uses parts of PCRE, Html Tidy
+14:52:28 Starting for DBA password change.
+14:52:28 Database version 3126
+14:52:28 SQL Optimizer enabled (max 1000 layouts)
+14:52:30 Compiler unit is timed at 0.000242 msec
+14:52:31 Roll forward started
+14:52:31     3 transactions, 185 bytes replayed (100 %)
+14:52:31 Roll forward complete
+14:52:31 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+14:52:31 The DBA password is changed.
+14:52:31 The DAV password is changed.
+14:52:32 Checkpoint started
+14:52:32 Checkpoint finished, log reused
+14:52:32 Server exiting
+
+		Mon Jun 29 2020
+14:52:32 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+14:52:32   plain version 1.1.3230 from OpenLink Software
+14:52:32   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+14:52:32   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+14:52:32 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+14:52:32   plain version 1.0.3230 from OpenLink Software
+14:52:32   Cartographic Projections support based on Frank Warmerdam's proj4 library
+14:52:32   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+14:52:32 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+14:52:32   ShapefileIO version 0.1virt71 from OpenLink Software
+14:52:32   Shapefile support based on Frank Warmerdam's Shapelib
+14:52:32   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+14:52:32 OpenLink Virtuoso Universal Server
+14:52:32 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+14:52:32 uses OpenSSL 1.0.2s  28 May 2019
+14:52:32 uses parts of PCRE, Html Tidy
+14:52:32 Database version 3126
+14:52:32 SQL Optimizer enabled (max 1000 layouts)
+14:52:34 Compiler unit is timed at 0.000199 msec
+14:52:34 Roll forward started
+14:52:34 Roll forward complete
+14:52:35 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+14:52:36 Checkpoint started
+14:52:36 Checkpoint finished, log reused
+14:52:36 HTTP/WebDAV server online at 8890
+14:52:36 Server online at 1111 (pid 1)
+14:54:32 Server received signal 2
+14:54:32 Initiating normal shutdown
+14:54:33 Checkpoint started
+14:54:33 Checkpoint finished, log reused
+14:54:33 Server shutdown complete
+
+		Mon Jun 29 2020
+15:21:59 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+15:21:59   plain version 1.1.3230 from OpenLink Software
+15:21:59   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+15:21:59   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+15:21:59 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+15:22:00   plain version 1.0.3230 from OpenLink Software
+15:22:00   Cartographic Projections support based on Frank Warmerdam's proj4 library
+15:22:00   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+15:22:00 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+15:22:00   ShapefileIO version 0.1virt71 from OpenLink Software
+15:22:00   Shapefile support based on Frank Warmerdam's Shapelib
+15:22:00   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+15:22:00 OpenLink Virtuoso Universal Server
+15:22:00 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+15:22:00 uses OpenSSL 1.0.2s  28 May 2019
+15:22:00 uses parts of PCRE, Html Tidy
+15:22:00 Database version 3126
+15:22:00 SQL Optimizer enabled (max 1000 layouts)
+15:22:02 Compiler unit is timed at 0.000192 msec
+15:22:03 Roll forward started
+15:22:03 Roll forward complete
+15:22:03 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+15:22:05 Checkpoint started
+15:22:06 Checkpoint finished, log reused
+15:22:06 HTTP/WebDAV server online at 8890
+15:22:06 Server online at 1111 (pid 1)
+15:22:41 Server received signal 2
+15:22:41 Initiating normal shutdown
+15:22:41 Checkpoint started
+15:22:41 Checkpoint finished, log reused
+15:22:41 Server shutdown complete
+
+		Mon Jun 29 2020
+15:39:20 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+15:39:20   plain version 1.1.3230 from OpenLink Software
+15:39:20   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+15:39:20   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+15:39:20 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+15:39:20   plain version 1.0.3230 from OpenLink Software
+15:39:20   Cartographic Projections support based on Frank Warmerdam's proj4 library
+15:39:20   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+15:39:20 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+15:39:20   ShapefileIO version 0.1virt71 from OpenLink Software
+15:39:20   Shapefile support based on Frank Warmerdam's Shapelib
+15:39:20   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+15:39:20 OpenLink Virtuoso Universal Server
+15:39:20 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+15:39:20 uses OpenSSL 1.0.2s  28 May 2019
+15:39:20 uses parts of PCRE, Html Tidy
+15:39:20 Database version 3126
+15:39:21 SQL Optimizer enabled (max 1000 layouts)
+15:39:22 Compiler unit is timed at 0.000226 msec
+15:39:23 Roll forward started
+15:39:23 Roll forward complete
+15:39:24 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+15:39:25 Checkpoint started
+15:39:26 Checkpoint finished, log reused
+15:39:26 HTTP/WebDAV server online at 8890
+15:39:26 Server online at 1111 (pid 1)
+15:42:29 Server received signal 2
+15:42:29 Initiating normal shutdown
+15:42:29 Checkpoint started
+15:42:29 Checkpoint finished, log reused
+15:42:29 Server shutdown complete
+
+		Mon Jun 29 2020
+15:53:22 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+15:53:22   plain version 1.1.3230 from OpenLink Software
+15:53:22   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+15:53:22   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+15:53:22 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+15:53:22   plain version 1.0.3230 from OpenLink Software
+15:53:22   Cartographic Projections support based on Frank Warmerdam's proj4 library
+15:53:22   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+15:53:22 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+15:53:22   ShapefileIO version 0.1virt71 from OpenLink Software
+15:53:22   Shapefile support based on Frank Warmerdam's Shapelib
+15:53:22   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+15:53:22 OpenLink Virtuoso Universal Server
+15:53:22 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+15:53:22 uses OpenSSL 1.0.2s  28 May 2019
+15:53:22 uses parts of PCRE, Html Tidy
+15:53:22 Database version 3126
+15:53:22 SQL Optimizer enabled (max 1000 layouts)
+15:53:23 Compiler unit is timed at 0.000192 msec
+15:53:24 Roll forward started
+15:53:24 Roll forward complete
+15:53:25 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+15:53:26 Checkpoint started
+15:53:27 Checkpoint finished, log reused
+15:53:27 HTTP/WebDAV server online at 8890
+15:53:27 Server online at 1111 (pid 1)
+16:06:19 Server received signal 2
+16:06:19 Initiating normal shutdown
+16:06:19 Checkpoint started
+16:06:19 Checkpoint finished, log reused
+16:06:19 Server shutdown complete
+
+		Mon Jun 29 2020
+16:14:58 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+16:14:58   plain version 1.1.3230 from OpenLink Software
+16:14:58   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+16:14:58   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+16:14:58 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+16:14:58   plain version 1.0.3230 from OpenLink Software
+16:14:58   Cartographic Projections support based on Frank Warmerdam's proj4 library
+16:14:58   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+16:14:58 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+16:14:58   ShapefileIO version 0.1virt71 from OpenLink Software
+16:14:58   Shapefile support based on Frank Warmerdam's Shapelib
+16:14:58   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+16:14:58 OpenLink Virtuoso Universal Server
+16:14:58 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+16:14:58 uses OpenSSL 1.0.2s  28 May 2019
+16:14:58 uses parts of PCRE, Html Tidy
+16:14:58 Database version 3126
+16:14:58 SQL Optimizer enabled (max 1000 layouts)
+16:15:00 Compiler unit is timed at 0.000199 msec
+16:15:01 Roll forward started
+16:15:01 Roll forward complete
+16:15:01 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+16:15:02 Checkpoint started
+16:15:03 Checkpoint finished, log reused
+16:15:03 HTTP/WebDAV server online at 8890
+16:15:03 Server online at 1111 (pid 1)
+17:02:42 Server received signal 2
+17:02:42 Initiating normal shutdown
+17:02:42 Checkpoint started
+17:02:43 Checkpoint finished, log reused
+17:02:43 Server shutdown complete
+
+		Mon Jun 29 2020
+23:18:49 { Loading plugin 1: Type `plain', file `geos' in `../hosting'
+23:18:49   plain version 1.1.3230 from OpenLink Software
+23:18:49   GEOS plugin based on Geometry Engine Open Source library from Open Source Geospatial Foundation
+23:18:49   SUCCESS plugin 1: loaded from ../hosting/geos.so }
+23:18:49 { Loading plugin 2: Type `plain', file `proj4' in `../hosting'
+23:18:49   plain version 1.0.3230 from OpenLink Software
+23:18:49   Cartographic Projections support based on Frank Warmerdam's proj4 library
+23:18:49   SUCCESS plugin 2: loaded from ../hosting/proj4.so }
+23:18:49 { Loading plugin 3: Type `plain', file `shapefileio' in `../hosting'
+23:18:49   ShapefileIO version 0.1virt71 from OpenLink Software
+23:18:49   Shapefile support based on Frank Warmerdam's Shapelib
+23:18:49   SUCCESS plugin 3: loaded from ../hosting/shapefileio.so }
+23:18:49 OpenLink Virtuoso Universal Server
+23:18:49 Version 07.20.3230-pthreads for Linux as of Feb  4 2020
+23:18:49 uses OpenSSL 1.0.2s  28 May 2019
+23:18:49 uses parts of PCRE, Html Tidy
+23:18:49 Database version 3126
+23:18:49 SQL Optimizer enabled (max 1000 layouts)
+23:18:51 Compiler unit is timed at 0.000196 msec
+23:18:51 Roll forward started
+23:18:51 Roll forward complete
+23:18:52 PL LOG: Error in autoexec.isql: [42000] U0013: The object "SPARQL" already have role "SPARQL_UPDATE" assigned
+23:18:54 Checkpoint started
+23:18:54 Checkpoint finished, log reused
+23:18:54 HTTP/WebDAV server online at 8890
+23:18:54 Server online at 1111 (pid 1)
+23:52:10 Server received signal 2
+23:52:10 Initiating normal shutdown
+23:52:10 Checkpoint started
+23:52:10 Checkpoint finished, log reused
+23:52:10 Server shutdown complete
