@@ -176,17 +176,8 @@ class PersistentDrawerLeft extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Chewie-NS
+              Chewie-NS Tutorial
             </Typography>
-            {/* {!this.props.isAuthenticated ? (
-              <Button color="inherit" component={Link} to="/auth">
-                Login
-              </Button>
-            ) : (
-              <Button color="inherit" component={Link} to="/logout">
-                Logout
-              </Button>
-            )} */}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -241,12 +232,10 @@ class PersistentDrawerLeft extends Component {
           </List>
           <Divider />
           <List>
-            {/* <ListItem
+            <ListItem
               button
               component="a"
-              href={
-                "https://github.com/B-UMMI/Nomenclature_Server_docker_compose"
-              }
+              href={"https://github.com/B-UMMI/Chewie-NS_tutorial"}
               target={"_blank"}
               rel="noopener noreferrer"
             >
@@ -254,7 +243,7 @@ class PersistentDrawerLeft extends Component {
                 <GitHubIcon style={{ color: "white" }} />
               </ListItemIcon>
               <ListItemText primary={"Github"} />
-            </ListItem> */}
+            </ListItem>
             <ListItem
               button
               component="a"
