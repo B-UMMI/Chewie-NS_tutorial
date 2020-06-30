@@ -3624,7 +3624,7 @@ class SchemaLociDataAPItypon(Resource):
                         401: 'Unauthenticated',
                         404: 'Not Found',
                         406: 'Not acceptable'},
-             security=['access_token'])
+             security=[])
     def post(self, species_id, schema_id):
 
         # c_user = get_jwt_identity()
@@ -5187,7 +5187,7 @@ class SequencesAPItypon(Resource):
                         403: 'Unauthorized',
                         401: 'Unauthenticated',
                         404: 'Not Found'},
-            )
+             security=[])
     @w.use_kwargs(api, parser)
     def get(self, **kwargs):
         """Get information on sequence, DNA string, uniprot URI and uniprot label."""
