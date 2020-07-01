@@ -99,7 +99,7 @@ class Species extends Component {
     // create download element
     const link = document.createElement("a");
     link.href =
-      "https://chewbbaca.online/api/NS/api/download/prodigal_training_files/" +
+      "https://tutorial.chewbbaca.online/api/NS/api/download/prodigal_training_files/" +
       ptfHash;
     link.setAttribute("download", fileName);
     document.body.appendChild(link);
@@ -145,7 +145,7 @@ class Species extends Component {
     // create download element
     const link = document.createElement("a");
     link.href =
-      "https://chewbbaca.online/api/NS/api/download/compressed_schemas/" +
+      "https://tutorial.chewbbaca.online/api/NS/api/download/compressed_schemas/" +
       endpointVariables;
     link.setAttribute("download", fileName);
     document.body.appendChild(link);
