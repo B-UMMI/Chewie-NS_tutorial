@@ -42,6 +42,7 @@ Code documentation
 
 import os
 import sys
+import time
 import pickle
 import shutil
 import logging
@@ -470,6 +471,13 @@ def compress_schema(schema, old_zip, local_sparql, virtuoso_graph):
     """
 
     schema_ptf_path = os.path.join(Config.SCHEMAS_PTF, schema[5])
+    # tutorial schemas are small and compression might start
+    # before the PTF has been fully uploaded
+    waited = 0
+    while waited < 360 and os.path.isfile(schema_ptf_path) is False:
+        waited += 10
+        time.sleep(10)
+
     if os.path.isfile(schema_ptf_path) is False:
         logging.warning('Could not find training file for schema {0} ({1}).'
                         ' Aborting schema compression.'.format(schema[0], schema[-2]))
