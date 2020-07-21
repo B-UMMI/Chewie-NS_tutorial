@@ -237,7 +237,7 @@ class Schema extends Component {
         },
         {
           name: "user_annotation",
-          label: "User Annotation",
+          label: "User locus name",
           options: {
             filter: true,
             sort: true,

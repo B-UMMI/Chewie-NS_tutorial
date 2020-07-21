@@ -77,8 +77,6 @@ class Sequences extends Component {
   onSubmitHandler = (event) => {
     event.preventDefault();
 
-    console.log(this.state.seq);
-
     this.props.onFetchSequence(this.state.seq);
   };
 
@@ -103,6 +101,22 @@ class Sequences extends Component {
       let seqData = this.props.sequence_data;
 
       const columns = [
+        {
+          name: "species_name",
+          label: "Species",
+          options: {
+            filter: true,
+            sort: true,
+            display: true,
+            setCellHeaderProps: (value) => {
+              return {
+                style: {
+                  fontWeight: "bold",
+                },
+              };
+            },
+          },
+        },
         {
           name: "schemas_url",
           label: "Schema",
@@ -150,6 +164,22 @@ class Sequences extends Component {
                   {locus_id}
                 </a>
               );
+            },
+          },
+        },
+        {
+          name: "alleles",
+          label: "Number of alleles",
+          options: {
+            filter: true,
+            sort: true,
+            display: true,
+            setCellHeaderProps: (value) => {
+              return {
+                style: {
+                  fontWeight: "bold",
+                },
+              };
             },
           },
         },

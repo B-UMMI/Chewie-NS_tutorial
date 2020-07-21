@@ -10,7 +10,6 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 // Material-UI components
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
@@ -56,6 +55,22 @@ class Stats extends Component {
     if (!this.props.loading) {
       const columns = [
         {
+          name: "species_id",
+          label: "Species ID",
+          options: {
+            filter: false,
+            sort: true,
+            display: true,
+            setCellHeaderProps: (value) => {
+              return {
+                style: {
+                  fontWeight: "bold",
+                },
+              };
+            },
+          },
+        },
+        {
           name: "species_name",
           label: "Species",
           options: {
@@ -76,7 +91,7 @@ class Stats extends Component {
         },
         {
           name: "nr_schemas",
-          label: "Schemas available",
+          label: "No. Schemas available",
           options: {
             filter: true,
             setCellHeaderProps: (value) => {
@@ -89,7 +104,7 @@ class Stats extends Component {
           },
         },
         {
-          name: "Schema Details",
+          name: "Schemas Details",
           options: {
             filter: false,
             empty: true,
@@ -106,28 +121,12 @@ class Stats extends Component {
                   variant="contained"
                   color="default"
                   component={RouterLink}
-                  to={"/species/" + tableMeta.rowData[3]}
-                  onClick={() => console.log(tableMeta.rowData[3])}
+                  to={"/species/" + tableMeta.rowData[0]}
+                  onClick={() => console.log(tableMeta.rowData[0])}
                 >
                   Schema Details
                 </Button>
               );
-            },
-          },
-        },
-        {
-          name: "species_id",
-          label: "Species ID",
-          options: {
-            filter: false,
-            sort: true,
-            display: true,
-            setCellHeaderProps: (value) => {
-              return {
-                style: {
-                  fontWeight: "bold",
-                },
-              };
             },
           },
         },

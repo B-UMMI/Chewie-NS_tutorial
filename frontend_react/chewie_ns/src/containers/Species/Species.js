@@ -9,7 +9,6 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 // Material-UI components
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import GetAppSharpIcon from "@material-ui/icons/GetAppSharp";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
@@ -353,6 +352,21 @@ class Species extends Component {
         {
           name: "minLen",
           label: "Minimum Length (bp)",
+          options: {
+            filter: false,
+            sort: true,
+            setCellHeaderProps: (value) => {
+              return {
+                style: {
+                  fontWeight: "bold",
+                },
+              };
+            },
+          },
+        },
+        {
+          name: "sizeThresh",
+          label: "Size Threshold",
           options: {
             filter: false,
             sort: true,
