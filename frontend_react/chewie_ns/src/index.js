@@ -18,6 +18,7 @@ import locusReducer from "./store/reducers/locus";
 import annotationsReducer from "./store/reducers/annotations";
 import descriptionsReducer from "./store/reducers/descriptions";
 import sequencesReducer from "./store/reducers/sequences";
+import schemaBoxReducer from "./store/reducers/schema_box";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   annotations: annotationsReducer,
   descriptions: descriptionsReducer,
   sequences: sequencesReducer,
+  schemaBox: schemaBoxReducer,
 });
 
 // Create the react-redux store

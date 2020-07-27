@@ -8,6 +8,7 @@ import IMMlogo from "../../assets/images/iMM_JLA_medium2.png";
 import FMULlogo from "../../assets/images/fmul_logo.png";
 
 // Material UI import
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 
 // Chewie local imports
@@ -16,6 +17,16 @@ import axios from "../../axios-backend";
 import classes from "./Chewie.module.css";
 
 class Chewie extends Component {
+  openChewieNSPageHandler = () => {
+    const url = "https://chewbbaca.online/";
+
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.target = "_blank";
+    anchor.rel = "noopener noreferrer";
+    anchor.click();
+  };
+
   render() {
     return (
       <div id="homeDiv" className={classes.homeDiv}>
@@ -73,14 +84,30 @@ class Chewie extends Component {
         </div>
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <div id="availableSchemasDiv" style={{ marginTop: "30px" }}>
-            <Button
-              variant="contained"
-              color="default"
-              component={Link}
-              to="/stats"
+            <Box
+              style={{
+                height: 80,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
-              Available Schemas
-            </Button>
+              <Button
+                variant="contained"
+                color="default"
+                component={Link}
+                to="/stats"
+              >
+                Available Schemas
+              </Button>
+              <Button
+                variant="contained"
+                color="default"
+                onClick={this.openChewieNSPageHandler}
+              >
+                Back to Chewie-NS
+              </Button>
+            </Box>
           </div>
         </div>
         <div id="INCD_div" className={classes.incdDiv}>

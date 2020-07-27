@@ -4,7 +4,6 @@ import clsx from "clsx";
 
 // Material UI imports
 import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
 import Drawer from "@material-ui/core/Drawer";
 import Toolbar from "@material-ui/core/Toolbar";
 import Divider from "@material-ui/core/Divider";
@@ -33,6 +32,7 @@ import ChromeReaderModeIcon from "@material-ui/icons/ChromeReaderMode";
 
 // Material Design Icon import
 import { mdiApi } from "@mdi/js";
+import { mdiHomeModern } from "@mdi/js";
 
 // React Router Dom import
 import { Link } from "react-router-dom";
@@ -270,6 +270,21 @@ class PersistentDrawerLeft extends Component {
                 </SvgIcon>
               </ListItemIcon>
               <ListItemText primary={"API"} />
+            </ListItem>
+            <ListItem
+              button
+              component="a"
+              href={"https://chewbbaca.online/"}
+              target={"_blank"}
+              rel="noopener noreferrer"
+            >
+              <ListItemIcon>
+                <SvgIcon fontSize="large" htmlColor="#ffffff">
+                  {" "}
+                  <path d={mdiHomeModern} />{" "}
+                </SvgIcon>
+              </ListItemIcon>
+              <ListItemText primary={"Back to Chewie-NS"} />
             </ListItem>
           </List>
         </Drawer>
