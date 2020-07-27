@@ -76,3 +76,6 @@ class Config(object):
 
     # schema upload directory
     SCHEMA_UP = './schema_insertion_temp'
+
+    # file with hashes of tutorial files
+    TUTORIAL_HASHES = 'tutorial_hashes'

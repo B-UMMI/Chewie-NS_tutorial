@@ -475,8 +475,8 @@ def compress_schema(schema, old_zip, local_sparql, virtuoso_graph):
     # before the PTF has been fully uploaded
     waited = 0
     while waited < 360 and os.path.isfile(schema_ptf_path) is False:
-        waited += 10
-        time.sleep(10)
+        waited += 20
+        time.sleep(20)
 
     if os.path.isfile(schema_ptf_path) is False:
         logging.warning('Could not find training file for schema {0} ({1}).'
@@ -502,7 +502,7 @@ def compress_schema(schema, old_zip, local_sparql, virtuoso_graph):
     logging.info('Adapting schema {0} ({1})'.format(schema[0], schema[-2]))
     output_directory = os.path.join(Config.SCHEMAS_ZIP, '{0}_{1}'.format(schema[-3], schema[1]))
     adapted = PrepExternalSchema.main(temp_dir, output_directory, 6,
-                                      float(schema[2]), int(schema[3]),
+                                      float(schema[2]), 0,
                                       int(schema[4]), schema[5],
                                       None, os.path.join('/app', logfile))
 
@@ -601,7 +601,7 @@ def parse_arguments():
 
     return [args.mode, args.species_id, args.schema_id,
             args.virtuoso_graph, args.local_sparql, args.base_url,
-            args.virtuoso_graph, args.virtuoso_pass]
+            args.virtuoso_user, args.virtuoso_pass]
 
 
 def global_compressor(graph, sparql, base_url):
@@ -626,12 +626,13 @@ def global_compressor(graph, sparql, base_url):
     for species in species_list:
         schemas = species_schemas(species, schemas, sparql, graph)
         if len(schemas) > 0:
-            current_schemas = schemas[species]
-            current_schemas_strs = ['{0}, {1}'.format(s[0], s[1]) for s in current_schemas]
-            logging.info('Found {0} schemas for {1} ({2}): {3}'.format(len(current_schemas),
-                                                                       species,
-                                                                       species_list[species],
-                                                                       ';'.join(current_schemas_strs)))
+            current_schemas = schemas.get(species, None)
+            if current_schemas is not None:
+                current_schemas_strs = ['{0}, {1}'.format(s[0], s[1]) for s in current_schemas]
+                logging.info('Found {0} schemas for {1} ({2}): {3}'.format(len(current_schemas),
+                                                                           species,
+                                                                           species_list[species],
+                                                                           ';'.join(current_schemas_strs)))
 
     if len(schemas) == 0:
         logging.warning('Could not find schemas for any species.\n\n')

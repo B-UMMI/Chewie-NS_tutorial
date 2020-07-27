@@ -50,6 +50,7 @@ logging.basicConfig(level=logging.INFO,
                     datefmt='%Y-%m-%dT%H:%M:%S',
                     filename=logfile)
 
+sync_lock = './schema_insertion_temp/sync_lock'
 
 thread_local = threading.local()
 
@@ -330,6 +331,8 @@ def send_alleles(post_files, local_sparql, virtuoso_user, virtuoso_pass):
 		for res in executor.map(post_alleles, post_files, repeat(local_sparql), repeat(virtuoso_user), repeat(virtuoso_pass)):
 			responses.append(res)
 			total += 1
+			# slow down process during tutorial
+			time.sleep(1)
 
 	return responses
 
@@ -413,6 +416,7 @@ def main(temp_dir, graph, sparql, base_url, user, password):
 		schema_files.append(locus_file)
 
 	# create SPARQL multiple INSERT queries
+	new_seqs = 0
 	identifiers = {}
 	queries_files = []
 	with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
@@ -420,11 +424,17 @@ def main(temp_dir, graph, sparql, base_url, user, password):
 			if res[0] is not None:
 				queries_files.append(res[0])
 			identifiers[res[1]] = [res[2], res[3]]
+			new_seqs += len(res[3])
 
 	start = time.time()
 	# insert data
 	# sort reponses to include summary in log file
+	# create lock file
+	with open(sync_lock, 'w') as lf:
+		lf.write('{0}\n{1}'.format(temp_dir, user))
 	post_results = send_alleles(queries_files, sparql, user, password)
+	# remove lock file after insertion
+	os.remove(sync_lock)
 
 	# create file with identifiers
 	identifiers_file = os.path.join(temp_dir, 'identifiers')
@@ -435,24 +445,28 @@ def main(temp_dir, graph, sparql, base_url, user, password):
 	delta = end - start
 	print('Insertion: {0}'.format(delta), flush=True)
 
-	# change dateEntered and last_modified dates
-	modification_date = str(dt.datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f'))
-	change_date(schema_uri, 'last_modified', modification_date,
-		                     graph, sparql, user, password)
+	# change last_modified date
+	if new_seqs > 0:
+		modification_date = str(dt.datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f'))
+		change_date(schema_uri, 'last_modified', modification_date, graph,
+					sparql, user, password)
 
-	# create pre-computed frontend files
-	os.system('python schema_totals.py -m single_schema '
-		      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
-		      ''.format(species_id, schema_id, graph, sparql, base_url))
-	os.system('python loci_totals.py -m single_schema '
-		      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
-		      ''.format(species_id, schema_id, graph, sparql, base_url))
-	os.system('python loci_mode.py -m single_schema '
-		      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
-		      ''.format(species_id, schema_id, graph, sparql, base_url))
-	os.system('python annotations.py -m single_schema '
-		      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
-		      ''.format(species_id, schema_id, graph, sparql, base_url))
+		# create pre-computed frontend files
+		os.system('python schema_totals.py -m single_schema '
+			      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
+			      ''.format(species_id, schema_id, graph, sparql, base_url))
+		os.system('python loci_totals.py -m single_schema '
+			      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
+			      ''.format(species_id, schema_id, graph, sparql, base_url))
+		os.system('python loci_mode.py -m single_schema '
+			      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
+			      ''.format(species_id, schema_id, graph, sparql, base_url))
+		os.system('python annotations.py -m single_schema '
+			      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
+			      ''.format(species_id, schema_id, graph, sparql, base_url))
+		os.system('python loci_boxplot.py -m single_schema '
+			      '--sp {0} --sc {1} --g {2} --s {3} --b {4}'
+			      ''.format(species_id, schema_id, graph, sparql, base_url))
 
 	# unlock schema
 	change_lock(schema_uri, 'Unlocked',

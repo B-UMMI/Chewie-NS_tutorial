@@ -2,18 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-AUTHORS
 
-    Mickael Silva
-    github: @
-
-    Pedro Cerqueira
-    github: @pedrorvc
-
-    Rafael Mamede
-    github: @rfm-targa
-
-DESCRIPTION
 
 """
 
@@ -23,6 +12,11 @@ DESCRIPTION
 COUNT_SCHEMA_LOCI = ('SELECT (COUNT(?parts) AS ?count) '
                      'FROM <{0}>'
                      'WHERE {{ <{1}> typon:hasSchemaPart ?parts .}}')
+
+COUNT_SPECIES_LOCI = ('SELECT (COUNT(?locus) AS ?count) '
+                      'FROM <{0}>'
+                      'WHERE {{ ?locus a typon:Locus;'
+                              ' typon:isOfTaxon <{1}> .}}')
 
 COUNT_SCHEMAS = ('SELECT (COUNT(?schemas) AS ?count) '
                  'FROM <{0}> '
@@ -50,6 +44,27 @@ INSERT_SCHEMA = ('INSERT DATA IN GRAPH <{0}> '
                    ' typon:Schema_lock "{17}"^^xsd:string;'
                    ' typon:SchemaDescription "{18}"^^xsd:string .}}')
 
+DELETE_SCHEMA = ('DELETE WHERE {{ GRAPH <{0}> '
+                '{{ ?schema a typon:Schema; '
+                   'typon:isFromTaxon ?taxon; '
+                   'typon:administratedBy ?administratedBy; '
+                   'typon:schemaName ?name; '
+                   'typon:bsr ?bsr; '
+                   'typon:chewBBACA_version ?chewBBACA_version; '
+                   'typon:ptf ?ptf; '
+                   'typon:translation_table ?trans; '
+                   'typon:minimum_locus_length ?min_locus_len; '
+                   'typon:size_threshold ?size_threshold; '
+                   'typon:word_size ?word_size; '
+                   'typon:cluster_sim ?cluster_sim; '
+                   'typon:representative_filter ?representative_filter; '
+                   'typon:intraCluster_filter ?intraCluster_filter; '
+                   'typon:dateEntered ?dateEntered; '
+                   'typon:last_modified ?last_modified; '
+                   'typon:Schema_lock ?Schema_lock; '
+                   'typon:SchemaDescription ?SchemaDescription . '
+                   'FILTER ( ?schema = <{1}> ) }} }}')
+
 COUNT_TOTAL_LOCI = ('SELECT (COUNT(?locus) AS ?count) '
                     'FROM <{0}> '
                     'WHERE '
@@ -68,10 +83,30 @@ INSERT_LOCUS = ('INSERT DATA IN GRAPH <{0}> '
                   ' typon:UserAnnotation "{6}"^^xsd:string;'
                   ' typon:CustomAnnotation "{7}"^^xsd:string{8} }}')
 
-MULTIPLE_INSERT_LOCUS = ('')
+DELETE_LOCUS = ('DELETE WHERE {{ GRAPH <{0}> '
+               '{{ ?locus a typon:Locus;'
+                 ' typon:name ?name;'
+                 ' typon:UniprotName ?UniprotName;'
+                 ' typon:UniprotLabel ?UniprotLabel;'
+                 ' typon:UniprotURI ?UniprotURI;'
+                 ' typon:UserAnnotation ?UserAnnotation;'
+                 ' typon:CustomAnnotation ?CustomAnnotation;'
+                 ' typon:originalName ?originalName .'
+                 'FILTER ( ?locus = <{1}> ) }} }}')
 
-
-##############################################################
+MULTIPLE_INSERT_LOCUS = ('INSERT {{ GRAPH <{0}> '
+                         '{{ ?locus a typon:Locus;'
+                           ' typon:name ?name;'
+                           ' typon:UniprotName ?UniprotName;'
+                           ' typon:UniprotLabel ?UniprotLabel;'
+                           ' typon:UniprotURI ?UniprotURI;'
+                           ' typon:UserAnnotation ?UserAnnotation;'
+                           ' typon:CustomAnnotation ?CustomAnnotation;'
+                           ' typon:originalName ?originalName .}} }}'
+                           'WHERE'
+                           '{{ '
+                               'VALUES (?locus ?name ?UniprotName ?UniprotLabel ?UniprotURI ?UserAnnotation ?CustomAnnotation ?originalName) {{ {1} }}'
+                           '}}')
 
 SELECT_LOCUS = ('SELECT '
                 '(str(?name) AS ?name) '
@@ -163,7 +198,7 @@ SELECT_LOCUS_SEQS = ('SELECT '
 # If we create a schema based on one of the loci that display this issue,
 # the process behaves as expected, it will only display abnormal behavior when
 # we insert the complete schema. If we restart the docker-compose, the issue completely
-# disappears and we are able to get the sequences thorugh Python as expected.
+# disappears and we are able to get the sequences through Python as expected.
 SELECT_LOCUS_SEQS_BY_DATE = ('SELECT DISTINCT '
                              '?allele_id '
                              '?sequence '
@@ -242,11 +277,40 @@ INSERT_SCHEMA_LOCUS = ('INSERT DATA IN GRAPH <{0}> '
                          ' typon:hasLocus <{3}> .'
                          ' <{4}> typon:hasSchemaPart <{5}> .}}')
 
-MULTIPLE_INSERT_SCHEMA_LOCUS = ('')
+DELETE_SCHEMA_LOCUS = ('DELETE WHERE {{ GRAPH <{0}> '
+                       '{{ ?SchemaPart a typon:SchemaPart;'
+                         ' typon:index ?index;'
+                         ' typon:hasLocus ?hasLocus .'
+                         ' ?schema typon:hasSchemaPart ?SchemaPart .'
+                         'FILTER ( ?hasLocus = <{1}> ) }} }}')
+
+MULTIPLE_INSERT_SCHEMA_LOCUS = ('INSERT {{ GRAPH <{0}> '
+                                '{{ ?SchemaPart a typon:SchemaPart;'
+                                  ' typon:index ?index;'
+                                  ' typon:hasLocus ?hasLocus .'
+                                  ' ?schema typon:hasSchemaPart ?SchemaPart2 .}} }}'
+                                  'WHERE'
+                                  '{{ '
+                                      'VALUES (?SchemaPart ?index ?hasLocus ?schema ?SchemaPart2) {{ {1} }}'
+                                  '}}')
 
 INSERT_SPECIES_LOCUS = ('INSERT DATA IN GRAPH <{0}> '
                         '{{ <{1}> a typon:Locus;'
                           ' typon:isOfTaxon <{2}> .}}')
+
+# cannot include locus because 
+DELETE_SPECIES_LOCUS = ('DELETE WHERE {{ GRAPH <{0}> '
+                        '{{ <{1}> typon:isOfTaxon ?isOfTaxon .}} }}')
+
+MULTIPLE_INSERT_SPECIES_LOCUS = ('INSERT {{ GRAPH <{0}> '
+                                 '{{ ?locus a typon:Locus;'
+                                   ' typon:isOfTaxon ?taxon .}} }}'
+                                   'WHERE'
+                                   '{{ '
+                                       'VALUES (?locus ?taxon) {{ {1} }}'
+                                   '}}')
+
+ASK_SCHEMA = ('ASK WHERE {{ <{0}> a typon:Schema . }}')
 
 ASK_SCHEMA_LOCK = ('ASK WHERE {{ <{0}> a typon:Schema;'
                                ' typon:Schema_lock "Unlocked"^^xsd:string }}')
@@ -363,6 +427,19 @@ SELECT_SCHEMA = ('SELECT ?schema '
                  'WHERE {{ ?schema a typon:Schema;'
                          ' typon:isFromTaxon <{1}>;'
                          ' typon:schemaName "{2}"^^xsd:string .}}')
+
+SELECT_HIGHEST_SCHEMA = ('SELECT ?schema '
+                         'FROM <{0}> '
+                         'WHERE {{ ?schema a typon:Schema;'
+                                 ' typon:isFromTaxon <{1}> '
+                         'BIND((strafter(str(?schema), "schemas/") AS ?lastChar)) }}'
+                         'ORDER BY DESC(xsd:integer(?lastChar)) LIMIT 1')
+
+SELECT_HIGHEST_LOCUS = ('SELECT ?locus '
+                        'FROM <{0}> '
+                        'WHERE {{ ?locus a typon:Locus '
+                        'BIND((strafter(str(?locus), "loci/") AS ?lastChar)) }}'
+                        'ORDER BY DESC(xsd:integer(?lastChar)) LIMIT 1')
 
 INSERT_USER = ('INSERT DATA IN GRAPH <{0}> '
                '{{ <{1}> a <http://xmlns.com/foaf/0.1/Agent>;'
@@ -703,10 +780,15 @@ SELECT_SEQUENCE_INFO_BY_DNA = ('SELECT '
                                '?alleles '
                                '?uniprot '
                                '?label '
+                               '?name '
                                'FROM <{0}> '
                                'WHERE '
                                '{{ ?alleles typon:hasSequence <{1}>;'
                                  ' typon:isOfLocus ?locus .'
+                                 ' ?locus a typon:Locus;'
+                                 ' typon:isOfTaxon ?taxon .'
+                                 ' ?taxon a <http://purl.uniprot.org/core/Taxon>;'
+                                 ' typon:name ?name .'
                                  ' ?schemas a typon:Schema;'
                                  ' typon:hasSchemaPart ?part .'
                                  ' ?part a typon:SchemaPart;'
@@ -766,6 +848,7 @@ MULTIPLE_INSERT_NEW_SEQUENCE = ('INSERT {{ GRAPH <{0}> '
                                     'VALUES (?seq ?nucseq ?allele ?species ?user ?locus ?date ?id) {{ {1} }}'
                                 '}}')
 
+# inserts 8 triples
 INSERT_ALLELE_LINK_SEQUENCE = ('INSERT DATA IN GRAPH <{0}> '
                                '{{ <{1}> a typon:Allele;'
                                  ' typon:name "{2}";'
@@ -775,6 +858,31 @@ INSERT_ALLELE_LINK_SEQUENCE = ('INSERT DATA IN GRAPH <{0}> '
                                  ' typon:id "{6}"^^xsd:integer;'
                                  ' typon:hasSequence <{7}> .'
                                  ' <{4}> typon:hasDefinedAllele <{1}> .}}')
+
+# deletes 8 triples
+DELETE_ALLELE = ('DELETE WHERE {{ GRAPH <{0}> '
+                 '{{ <{1}> a typon:Allele;'
+                   ' typon:name ?name;'
+                   ' typon:sentBy ?sentBy;'
+                   ' typon:isOfLocus ?isOfLocus;'
+                   ' typon:dateEntered ?dateEntered;'
+                   ' typon:id ?id;'
+                   ' typon:hasSequence ?hasSequence .'
+                   ' <{2}> typon:hasDefinedAllele <{1}> .}} }}')
+
+# deletes all alleles that are associated to a locus
+DELETE_LOCUS_ALLELES = ('DELETE WHERE {{ GRAPH <{0}> '
+                        '{{ ?allele a typon:Allele;'
+                          ' typon:name ?name;'
+                          ' typon:sentBy ?sentBy;'
+                          ' typon:isOfLocus ?isOfLocus;'
+                          ' typon:dateEntered ?dateEntered;'
+                          ' typon:id ?id;'
+                          ' typon:hasSequence ?hasSequence .'
+                          ' <{1}> typon:hasDefinedAllele ?allele .'
+                          'FILTER ( ?isOfLocus = <{1}>) }} }}')
+
+##########################################################
 
 MULTIPLE_INSERT_LINK_SEQUENCE = ('')
 
