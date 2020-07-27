@@ -3739,6 +3739,9 @@ class SchemaLociDataAPItypon(Resource):
         # c_user = get_jwt_identity()
         c_user = "2"
 
+        species_uri = '{0}species/{1}'.format(
+            current_app.config['BASE_URL'], species_id)
+        
         schema_uri = '{0}species/{1}/schemas/{2}'.format(
             current_app.config['BASE_URL'], species_id, schema_id)
 
