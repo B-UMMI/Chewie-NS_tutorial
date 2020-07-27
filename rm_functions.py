@@ -517,7 +517,7 @@ def periodic_remover(time, virtuoso_graph, local_sparql,
     # get list of schemas per species
     schemas = {}
     for species in species_list:
-        schemas = species_schemas(species, schemas, sparql, graph)
+        schemas = species_schemas(species, schemas, local_sparql, graph)
         if len(schemas) > 0:
             current_schemas = schemas.get(species, None)
             if current_schemas is not None:
