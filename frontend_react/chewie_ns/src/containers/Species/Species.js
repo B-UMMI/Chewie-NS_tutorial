@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
+// Chewie local imports
+import Aux from "../../hoc/Aux/Aux";
 import axios from "../../axios-backend";
-import Spinner from "../../components/UI/Spinner/Spinner";
+// import Spinner from "../../components/UI/Spinner/Spinner";
 import Copyright from "../../components/Copyright/Copyright";
 import * as actions from "../../store/actions/index";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
@@ -118,7 +121,16 @@ class Species extends Component {
     const schemaName = tableMeta.rowData[1];
 
     // get last modification date
-    const lastModifiedDate = this.props.species[schemaId - 1].lastModifiedISO;
+    let lastModifiedDate = "";
+
+    for (let scheID in this.props.species) {
+      console.log(this.props.species[scheID]);
+      if (schemaId === this.props.species[scheID].schema_id) {
+        lastModifiedDate = this.props.species[scheID].lastModifiedISO;
+      } else {
+        lastModifiedDate = this.props.species[0].lastModifiedISO;
+      }
+    }
 
     const endpointVariables =
       speciesId + "/" + schemaId + "/" + lastModifiedDate;
@@ -168,7 +180,7 @@ class Species extends Component {
     });
 
   render() {
-    let species = <Spinner />;
+    let species = <CircularProgress />;
     let species_plot = (
       <div style={{ textAlign: "center" }}>
         <CircularProgress />
@@ -524,14 +536,28 @@ class Species extends Component {
       );
     }
     return (
-      <div style={{ marginLeft: "5%", marginRight: "5%" }}>
-        <div>
-          <h1 style={{ textAlign: "center" }}>Schemas Overview</h1>
+      <Aux>
+        <div id="schemasAvailable" style={{ float: "right" }}>
+          <Button
+            variant="contained"
+            color="default"
+            component={Link}
+            to="/stats"
+          >
+            Back to Available Schemas
+          </Button>
         </div>
-        <div style={{ marginTop: "40px" }}>{species}</div>
-        <div style={{ marginTop: "40px" }}>{species_plot}</div>
-        <Copyright />
-      </div>
+        <div style={{ marginLeft: "5%", marginRight: "5%" }}>
+          <div>
+            <h1 style={{ textAlign: "center" }}>Schemas Overview</h1>
+          </div>
+          <div style={{ marginTop: "40px" }}>{species}</div>
+          <div style={{ marginTop: "40px", marginBottom: "40px" }}>
+            {species_plot}
+          </div>
+          <Copyright />
+        </div>
+      </Aux>
     );
   }
 }
