@@ -566,7 +566,7 @@ def periodic_remover(time, virtuoso_graph, local_sparql,
                 deleted[species] += 1
 
     for sp, scs in deleted.items():
-        logging.warning('Deleted {0} schemas for {1}'.format(len(scs), sp))
+        logging.warning('Deleted {0} schemas for {1}'.format(scs, sp))
 
 
 def parse_arguments():
