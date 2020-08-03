@@ -549,21 +549,22 @@ def periodic_remover(time, virtuoso_graph, local_sparql,
             insertion_date = determine_date(schema_uri, local_sparql, virtuoso_graph)
 
             # convert date string to datetime object
-            insertion_date = dt.datetime.strptime(insertion_date, '%Y-%m-%dT%H:%M:%S.%f')
+            if insertion_date != 'singularity':
+	            insertion_date = dt.datetime.strptime(insertion_date, '%Y-%m-%dT%H:%M:%S.%f')
 
-            # determine time difference
-            diff = current_date - insertion_date
-            seconds = diff.total_seconds()
-            hours = divmod(seconds, 3600)[0]
+	            # determine time difference
+	            diff = current_date - insertion_date
+	            seconds = diff.total_seconds()
+	            hours = divmod(seconds, 3600)[0]
 
-            if hours >= time:
-                logging.warning('Schema {0} has been up for longer than {1} hours. Will be deleted.')
-                # remove schema
-                schema_id = schema_uri.split('/')[-1]
-                deleted_data = rm_schema(schema_id, species_id, virtuoso_graph,
-					                     local_sparql, base_url, virtuoso_user,
-					                     virtuoso_pass)
-                deleted[species] += 1
+	            if hours >= time:
+	                logging.warning('Schema {0} has been up for longer than {1} hours. Will be deleted.')
+	                # remove schema
+	                schema_id = schema_uri.split('/')[-1]
+	                deleted_data = rm_schema(schema_id, species_id, virtuoso_graph,
+						                     local_sparql, base_url, virtuoso_user,
+						                     virtuoso_pass)
+	                deleted[species] += 1
 
     for sp, scs in deleted.items():
         logging.warning('Deleted {0} schemas for {1}'.format(scs, sp))
