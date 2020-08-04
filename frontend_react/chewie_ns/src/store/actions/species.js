@@ -28,8 +28,8 @@ export const fetchSpecies = (spec_id) => {
     axios
       .get("stats/species/" + spec_id + "/totals")
       .then((res) => {
-        // console.log("[SUCESS]")
-        // console.log(res.data.message)
+        // console.log("[SUCESS]");
+        // console.log(res.data.message);
         const fetchedSpecies = [];
         for (let key in res.data.message) {
           let dateEnteredFormatted = new Date(
@@ -39,8 +39,9 @@ export const fetchSpecies = (spec_id) => {
             res.data.message[key].last_modified
           );
           fetchedSpecies.push({
-            schema_id:
-              res.data.message[key].uri[res.data.message[key].uri.length - 1],
+            schema_id: res.data.message[key].uri.substring(
+              res.data.message[key].uri.lastIndexOf("/") + 1
+            ),
             schema_name: res.data.message[key].name,
             user: res.data.message[key].user,
             chewie: res.data.message[key].chewBBACA_version,
@@ -166,6 +167,9 @@ export const fetchSpeciesAnnot = (spec_id) => {
         }
         console.log("[OLA4]");
         console.log(ola4);
+
+        console.log("[OLA2]");
+        console.log(ola2);
 
         for (let idx in ola4) {
           // console.log(ola4[idx])
