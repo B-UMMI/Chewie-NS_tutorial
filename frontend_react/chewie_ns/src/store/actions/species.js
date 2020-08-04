@@ -39,9 +39,11 @@ export const fetchSpecies = (spec_id) => {
             res.data.message[key].last_modified
           );
           fetchedSpecies.push({
-            schema_id: parseInt(res.data.message[key].uri.substring(
-              res.data.message[key].uri.lastIndexOf("/") + 1
-            )),
+            schema_id: parseInt(
+              res.data.message[key].uri.substring(
+                res.data.message[key].uri.lastIndexOf("/") + 1
+              )
+            ),
             schema_name: res.data.message[key].name,
             user: res.data.message[key].user,
             chewie: res.data.message[key].chewBBACA_version,
@@ -105,14 +107,14 @@ export const fetchSpeciesAnnot = (spec_id) => {
       .then((res) => {
         console.log(res);
         const fetchedSpeciesAnnot2 = [];
-        let x_val = 0;
-        let y_val = 0;
-        let locus_id = 0;
-        let ola2 = {};
-        let ola3 = {};
-        let ola4 = {};
-        let ola22 = [];
-        let olaLocus = {};
+        // let x_val = 0;
+        // let y_val = 0;
+        // let locus_id = 0;
+        // let ola2 = {};
+        // let ola3 = {};
+        // let ola4 = {};
+        // let ola22 = [];
+        // let olaLocus = {};
 
         // let curSchemaId = res.data.message[0].schema.substring(
         //   res.data.message[0].schema.lastIndexOf("/") + 1
@@ -123,85 +125,105 @@ export const fetchSpeciesAnnot = (spec_id) => {
         for (let id in schema_ids) {
           let curSchemaId = parseInt(id) + 1;
 
+          let x_val = [];
+          let y_val = [];
+          let locus_id = [];
+
           for (let key in res.data.message[id].loci) {
-            locus_id = res.data.message[id].loci[key].locus.substring(
-              res.data.message[id].loci[key].locus.lastIndexOf("/") + 1
+            locus_id.push(
+              res.data.message[id].loci[key].locus.substring(
+                res.data.message[id].loci[key].locus.lastIndexOf("/") + 1
+              )
             );
-            console.log(locus_id);
-
-            x_val += 1;
-
-            y_val = res.data.message[id].loci[key].nr_alleles;
-
-            if (curSchemaId in ola2) {
-              ola2[curSchemaId][[x_val]] = y_val;
-              olaLocus[curSchemaId][[x_val]] = locus_id;
-              ola3[curSchemaId].push(y_val);
-              ola4[curSchemaId][[locus_id]] = y_val;
-            } else if (!(curSchemaId in ola2)) {
-              // console.log("works2")
-              // console.log(curSchemaId)
-              ola2[curSchemaId] = {
-                [x_val]: y_val,
-              };
-
-              ola22.push(y_val);
-
-              ola3[curSchemaId] = ola22;
-
-              ola4[curSchemaId] = {
-                [locus_id]: y_val,
-              };
-
-              // ola22.push(
-              //   {[x_val]: y_val}
-              // )
-              olaLocus[curSchemaId] = {
-                [x_val]: locus_id,
-                // [locus_id]: y_val
-              };
-              x_val = 0;
-              locus_id = 0;
-              ola22 = [];
-            }
+            x_val.push(parseInt(key) + 1);
+            y_val.push(res.data.message[id].loci[key].nr_alleles);
           }
-        }
-        console.log("[OLA4]");
-        console.log(ola4);
-
-        console.log("[OLA2]");
-        console.log(ola2);
-
-        for (let idx in ola4) {
-          // console.log(ola4[idx])
-
-          let sorted = _(ola4[idx])
-            .toPairs()
-            .value()
-            .sort((a, b) => b[1] - a[1]);
-
-          let s_loci_id = sorted.map((arr2) => arr2[0]);
-
-          let s_nr_alleles = sorted.map((arr2) => arr2[1]);
-
-          // console.log(s_loci_id)
-          // console.log(s_nr_alleles)
 
           fetchedSpeciesAnnot2.push({
-            x: Object.keys(ola2[idx]),
-            y: s_nr_alleles,
+            x: x_val,
+            y: y_val,
             type: "bar",
-            name: "Schema " + idx,
+            name: "Schema " + curSchemaId,
             hovertemplate:
               "<b>Number of Alleles</b>: %{y}" +
               "<br><b>Locus_ID</b>: %{text}</br>",
-            text: s_loci_id,
-            //hoverinfo: "y+text"
-            // line: {
-            //   width: 1
-            // }
+            text: locus_id,
           });
         }
+
+        //     x_val += 1;
+
+        //     y_val = res.data.message[id].loci[key].nr_alleles;
+
+        //     if (curSchemaId in ola2) {
+        //       ola2[curSchemaId][[x_val]] = y_val;
+        //       olaLocus[curSchemaId][[x_val]] = locus_id;
+        //       ola3[curSchemaId].push(y_val);
+        //       ola4[curSchemaId][[locus_id]] = y_val;
+        //     } else if (!(curSchemaId in ola2)) {
+        //       // console.log("works2")
+        //       // console.log(curSchemaId)
+        //       ola2[curSchemaId] = {
+        //         [x_val]: y_val,
+        //       };
+
+        //       ola22.push(y_val);
+
+        //       ola3[curSchemaId] = ola22;
+
+        //       ola4[curSchemaId] = {
+        //         [locus_id]: y_val,
+        //       };
+
+        //       // ola22.push(
+        //       //   {[x_val]: y_val}
+        //       // )
+        //       olaLocus[curSchemaId] = {
+        //         [x_val]: locus_id,
+        //         // [locus_id]: y_val
+        //       };
+        //       x_val = 0;
+        //       locus_id = 0;
+        //       ola22 = [];
+        //     }
+        //   }
+        // }
+        // console.log("[OLA4]");
+        // console.log(ola4);
+
+        // console.log("[OLA2]");
+        // console.log(ola2);
+
+        // for (let idx in ola4) {
+        //   // console.log(ola4[idx])
+
+        //   let sorted = _(ola4[idx])
+        //     .toPairs()
+        //     .value()
+        //     .sort((a, b) => b[1] - a[1]);
+
+        //   let s_loci_id = sorted.map((arr2) => arr2[0]);
+
+        //   let s_nr_alleles = sorted.map((arr2) => arr2[1]);
+
+        //   // console.log(s_loci_id)
+        //   // console.log(s_nr_alleles)
+
+        //   fetchedSpeciesAnnot2.push({
+        //     x: Object.keys(ola2[idx]),
+        //     y: s_nr_alleles,
+        //     type: "bar",
+        //     name: "Schema " + idx,
+        //     hovertemplate:
+        //       "<b>Number of Alleles</b>: %{y}" +
+        //       "<br><b>Locus_ID</b>: %{text}</br>",
+        //     text: s_loci_id,
+        //     //hoverinfo: "y+text"
+        //     // line: {
+        //     //   width: 1
+        //     // }
+        //   });
+        // }
         dispatch(fetchSpeciesAnnotSuccess(fetchedSpeciesAnnot2));
       })
       .catch((err) => {
