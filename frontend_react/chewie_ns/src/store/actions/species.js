@@ -107,6 +107,7 @@ export const fetchSpeciesAnnot = (spec_id) => {
       .then((res) => {
         console.log(res);
 
+        // reference: https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
         function compareValues(key, order = "asc") {
           return function innerSort(a, b) {
             if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
