@@ -2571,8 +2571,6 @@ class SchemaListAPItypon(Resource):
         with open(tutorial_file, 'rb') as th:
             tutorial_hashes = pickle.load(th)
 
-        print(tutorial_hashes, flush=True)
-        print(schema_hashes, flush=True)
         accepted = False
         for sp, sc in tutorial_hashes.items():
             hashes = sc
@@ -3741,7 +3739,7 @@ class SchemaLociDataAPItypon(Resource):
 
         species_uri = '{0}species/{1}'.format(
             current_app.config['BASE_URL'], species_id)
-        
+
         schema_uri = '{0}species/{1}/schemas/{2}'.format(
             current_app.config['BASE_URL'], species_id, schema_id)
 
