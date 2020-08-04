@@ -305,13 +305,13 @@ def rm_schema(identifier, species_id, virtuoso_graph, local_sparql,
 		total_triples += results[0]
 
 	# delete description
-	schema_desc = aux.get_data(SPARQLWrapper(local_sparql),
-                                (sq.SELECT_SCHEMA_DESCRIPTION.format(virtuoso_graph, schema_uri)))
+	#schema_desc = aux.get_data(SPARQLWrapper(local_sparql),
+    #                            (sq.SELECT_SCHEMA_DESCRIPTION.format(virtuoso_graph, schema_uri)))
 
-	schema_desc = schema_desc['results']['bindings'][0]['description']['value']
-	desc_file = '{0}/{1}'.format(Config.PRE_COMPUTE, schema_desc)
-	if os.path.isfile(desc_file) is True:
-		subprocess.call(['rm', desc_file])
+	#schema_desc = schema_desc['results']['bindings'][0]['description']['value']
+	#desc_file = '{0}/{1}'.format(Config.PRE_COMPUTE, schema_desc)
+	#if os.path.isfile(desc_file) is True:
+	#	subprocess.call(['rm', desc_file])
 
 	# delete compressed version
 	zip_file = [f for f in os.listdir(Config.SCHEMAS_ZIP) if f.startswith('{0}_{1}'.format(species_id, identifier))]
