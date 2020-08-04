@@ -39,9 +39,9 @@ export const fetchSpecies = (spec_id) => {
             res.data.message[key].last_modified
           );
           fetchedSpecies.push({
-            schema_id: res.data.message[key].uri.substring(
+            schema_id: parseInt(res.data.message[key].uri.substring(
               res.data.message[key].uri.lastIndexOf("/") + 1
-            ),
+            )),
             schema_name: res.data.message[key].name,
             user: res.data.message[key].user,
             chewie: res.data.message[key].chewBBACA_version,
@@ -127,6 +127,7 @@ export const fetchSpeciesAnnot = (spec_id) => {
             locus_id = res.data.message[id].loci[key].locus.substring(
               res.data.message[id].loci[key].locus.lastIndexOf("/") + 1
             );
+            console.log(locus_id);
 
             x_val += 1;
 
