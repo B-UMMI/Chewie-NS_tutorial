@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import Aux from "../../hoc/Aux/Aux";
 import axios from "../../axios-backend";
 import classes from "./Locus.module.css";
+import Markdown from "../../components/Markdown/Markdown";
 import Copyright from "../../components/Copyright/Copyright";
 import classNames from "classnames";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
