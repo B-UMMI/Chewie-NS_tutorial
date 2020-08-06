@@ -1312,10 +1312,8 @@ class StatsSpecies(Resource):
                               (sq.COUNT_SPECIES_SCHEMAS.format(current_app.config['DEFAULTHGRAPH'])))
 
         species_schemas_count = result['results']['bindings']
-        if len(species_schemas_count) > 0:
-            return {'message': species_schemas_count}, 200
-        else:
-            return {'NOT FOUND': 'NS has no species or species have no schemas.'}, 404
+
+        return {'message': species_schemas_count}, 200
 
 
 @stats_conf.route("/species/<int:species_id>/totals")
