@@ -100,7 +100,8 @@ export const fetchStatsSpecies = () => {
         dispatch(fetchStatsSpeciesSuccess(fetchedSpeciesStatsSorted));
       })
       .catch((err) => {
-        dispatch(fetchStatsSpeciesFail(err));
+        console.log(err)
+        dispatch(fetchStatsSpeciesFail("Currently there are no schema available. Please try again later."));
       });
   };
 };
