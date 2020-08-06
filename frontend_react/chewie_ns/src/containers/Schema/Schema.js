@@ -209,7 +209,7 @@ class Schema extends Component {
           data={boxplot_data}
           layout={{
             title: {
-              text: "Loci Size Variation",
+              text: "Locus Size Variation",
             },
             xaxis: {
               showticklabels: false,
@@ -285,6 +285,9 @@ class Schema extends Component {
                 },
               };
             },
+            customBodyRender: (value, tableMeta, updateValue) => {
+              return <Markdown markdown={value} />;
+            },
           },
         },
         {
@@ -300,6 +303,9 @@ class Schema extends Component {
                   fontWeight: "bold",
                 },
               };
+            },
+            customBodyRender: (value, tableMeta, updateValue) => {
+              return <Markdown markdown={value} />;
             },
           },
         },

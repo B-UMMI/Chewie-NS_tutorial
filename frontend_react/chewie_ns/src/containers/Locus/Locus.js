@@ -291,6 +291,9 @@ class Locus extends Component {
                 },
               };
             },
+            customBodyRender: (value, tableMeta, updateValue) => {
+              return <Markdown markdown={value} />;
+            },
           },
         },
         {
@@ -306,6 +309,9 @@ class Locus extends Component {
                   fontWeight: "bold",
                 },
               };
+            },
+            customBodyRender: (value, tableMeta, updateValue) => {
+              return <Markdown markdown={value} />;
             },
           },
         },
@@ -378,7 +384,7 @@ class Locus extends Component {
         selectableRows: "none",
         selectableRowsOnClick: false,
         print: false,
-        download: false,
+        download: true,
         filter: false,
         search: false,
         viewColumns: true,
