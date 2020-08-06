@@ -69,7 +69,6 @@ export const fetchStatsSpecies = () => {
     axios
       .get("/stats/species")
       .then((res) => {
-        console.log(res.data.message);
         const fetchedSpeciesStats = [];
 
         if (res.data.message === []) {

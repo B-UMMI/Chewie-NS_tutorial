@@ -50,7 +50,7 @@ class Stats extends Component {
     });
 
   render() {
-    let stats = <CircularProgress />;
+    let stats = <MUIDataTable />;
 
     if (!this.props.loading) {
       const columns = [
