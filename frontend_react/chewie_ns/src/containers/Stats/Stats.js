@@ -133,11 +133,11 @@ class Stats extends Component {
       ];
 
       const options = {
-        textLabels: {
-          body: {
-            noMatch: <CircularProgress />,
-          },
-        },
+        // textLabels: {
+        //   body: {
+        //     noMatch: <CircularProgress />,
+        //   },
+        // },
         responsive: "scrollMaxHeight",
         selectableRowsHeader: false,
         selectableRows: "none",
