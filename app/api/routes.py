@@ -4116,7 +4116,8 @@ class SchemaLociUpdateAPItypon(Resource):
              security=[])
     def get(self, species_id, schema_id, loci_id):
 
-        c_user = get_jwt_identity()
+        #c_user = get_jwt_identity()
+        c_user = "2"
 
         user_uri = '{0}users/{1}'.format(current_app.config['BASE_URL'], c_user)
 
