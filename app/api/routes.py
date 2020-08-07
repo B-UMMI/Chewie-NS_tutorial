@@ -3712,12 +3712,15 @@ class SchemaLociDataAPItypon(Resource):
 
             inserted = set(inserted)
             if False not in inserted:
-                return {'message': schema_hashes,
+                return {'status': 'complete',
+                        'hashes': schema_hashes,
                         'nr_loci': nr_loci,
                         'sp_loci': sp_loci,
                         'sc_loci': sc_loci}, 201
             else:
-                return {'nr_loci': nr_loci,
+                return {'status': 'incomplete',
+                        'hashes': schema_hashes,
+                        'nr_loci': nr_loci,
                         'sp_loci': sp_loci,
                         'sc_loci': sc_loci}, 201
 
@@ -4252,24 +4255,7 @@ class SchemaLociUpdateAPItypon(Resource):
                                                       current_app.config['VIRTUOSO_USER'],
                                                       current_app.config['VIRTUOSO_PASS']))
 
-            # set time limit for task completion (seconds)
-            time_limit = 2700
-            current_time = 0
-            while (result.ready() is False) and (current_time < time_limit):
-                time.sleep(5)
-                current_time += 5
-
-            inserted = [result.ready(), result.get()]
-
-            # read file with results
-            identifiers_file = os.path.join(temp_dir, 'identifiers')
-            with open(identifiers_file, 'rb') as rf:
-                results = pickle.load(rf)
-
-            # remove temp directory
-            shutil.rmtree(temp_dir)
-
-            return results, 201
+            return {'nr_alleles': nr_alleles}, 201
 
         return {'OK': 'Received data.'}, 201
 
