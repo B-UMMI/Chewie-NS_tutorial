@@ -634,10 +634,11 @@ def periodic_remover(time, virtuoso_graph, local_sparql,
 	                logging.info('Schema {0} has been up for longer than {1} hours. Will be deleted.'.format(schema_uri, time))
 	                # remove schema
 	                schema_id = schema_uri.split('/')[-1]
-	                deleted_data = rm_schema(schema_id, species_id, virtuoso_graph,
-						                     local_sparql, base_url, virtuoso_user,
-						                     virtuoso_pass)
-	                deleted[species] += 1
+	                if schema_id != '1':
+		                deleted_data = rm_schema(schema_id, species_id, virtuoso_graph,
+							                     local_sparql, base_url, virtuoso_user,
+							                     virtuoso_pass)
+		                deleted[species] += 1
 
     for sp, scs in deleted.items():
         logging.info('Deleted {0} schemas for {1}'.format(scs, sp))
