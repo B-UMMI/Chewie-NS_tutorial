@@ -213,6 +213,12 @@ class Schema extends Component {
             },
             xaxis: {
               showticklabels: false,
+              title: { text: "Loci" },
+              zeroline: false,
+            },
+            yaxis: {
+              title: { text: "Allele size variation" },
+              zeroline: false,
             },
             boxgap: 0.05,
             boxgapgroup: 0.05,
