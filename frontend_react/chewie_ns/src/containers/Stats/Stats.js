@@ -10,7 +10,7 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 // Material-UI components
 import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+// import CircularProgress from "@material-ui/core/CircularProgress";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 // Material-UI Datatables
