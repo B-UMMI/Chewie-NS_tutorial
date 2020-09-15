@@ -190,7 +190,7 @@ class Species extends Component {
     const spd = JSON.parse(localStorage.getItem("speciesD"));
 
     if (!this.props.loading) {
-      const columnsBase = [
+      const columns = [
         {
           name: "schema_id",
           label: "Schema ID",
