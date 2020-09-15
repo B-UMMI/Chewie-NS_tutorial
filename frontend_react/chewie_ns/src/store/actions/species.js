@@ -46,7 +46,7 @@ export const fetchSpecies = (spec_id) => {
             ),
             schema_name: res.data.message[key].name,
             user: res.data.message[key].user,
-            chewie: res.data.message[key].software,
+            software: res.data.message[key].software,
             dateEntered:
               new Date(
                 dateEnteredFormatted.getTime() -
