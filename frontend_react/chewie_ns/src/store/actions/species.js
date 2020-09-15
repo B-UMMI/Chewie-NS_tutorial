@@ -29,7 +29,7 @@ export const fetchSpecies = (spec_id) => {
       .get("stats/species/" + spec_id + "/totals")
       .then((res) => {
         // console.log("[SUCESS]");
-        // console.log(res.data.message);
+        console.log(res.data.message);
         const fetchedSpecies = [];
         for (let key in res.data.message) {
           let dateEnteredFormatted = new Date(
@@ -46,7 +46,7 @@ export const fetchSpecies = (spec_id) => {
             ),
             schema_name: res.data.message[key].name,
             user: res.data.message[key].user,
-            chewie: res.data.message[key].chewBBACA_version,
+            chewie: res.data.message[key].software,
             dateEntered:
               new Date(
                 dateEnteredFormatted.getTime() -
