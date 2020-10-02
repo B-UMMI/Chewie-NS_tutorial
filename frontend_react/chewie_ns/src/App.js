@@ -16,11 +16,8 @@ import About from "./containers/About/About";
 import Locus from "./containers/Locus/Locus";
 import Chewie from "./containers/Chewie/Chewie";
 import Schema from "./containers/Schema/Schema";
-// import Logout from "./containers/Auth/Logout/Logout";
 import Species from "./containers/Species/Species";
-// import MuiLogin from "./containers/Auth/MuiLogin/MuiLogin";
 import Sequences from "./containers/Sequences/Sequences";
-// import MuiRegister from "./containers/Auth/MuiRegister/MuiRegister";
 import MuiSideDrawer from "./components/Navigation/MuiSideDrawer/MuiSideDrawer";
 import * as actions from "./store/actions/index";
 
@@ -114,8 +111,6 @@ class App extends Component {
       <Aux>
         <SimpleBreadcrumbs />
         <Switch>
-          {/* <Route path="/auth" component={MuiLogin} /> */}
-          {/* <Route path="/register" component={MuiRegister} /> */}
           <Route path="/about" component={About} />
           <Route path="/" exact component={Chewie} />
           <Route path="/stats" component={Stats} />
@@ -133,29 +128,6 @@ class App extends Component {
         </Switch>
       </Aux>
     );
-
-    // if (this.props.isAuthenticated) {
-    //   // Defines user authenticated routes
-    //   routes = (
-    //     <Switch>
-    //       <Route path="/logout" component={Logout} />
-    //       <Route path="/about" component={About} />
-    //       <Route path="/stats" component={Stats} />
-    //       <Route path="/sequences" component={Sequences} />
-    //       <Route path="/" exact component={Chewie} />
-    //       <Route
-    //         path="/species/:species_id/schemas/:schema_id/locus/:locus_id"
-    //         component={Locus}
-    //       />
-    //       <Route
-    //         path="/species/:species_id/schemas/:schema_id"
-    //         component={Schema}
-    //       />
-    //       <Route path="/species/:species_id" component={Species} />
-    //       <Redirect to="/" />
-    //     </Switch>
-    //   );
-    // }
 
     return (
       <div>
