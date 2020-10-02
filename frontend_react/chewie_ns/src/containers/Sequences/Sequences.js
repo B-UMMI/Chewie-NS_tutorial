@@ -229,8 +229,8 @@ class Sequences extends Component {
                 <div>
                   <TextField
                     id="outlined-textarea"
-                    label="Alelle Sequence"
-                    placeholder="DNA Sequence"
+                    label="Alelle Sequence or Hash"
+                    placeholder="DNA Sequence or Hash"
                     rows={4}
                     multiline
                     variant="outlined"
