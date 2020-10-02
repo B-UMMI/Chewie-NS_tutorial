@@ -28,7 +28,6 @@ export const fetchSequence = (sequence) => {
       axios
         .get("sequences/seq_info?seq_id=" + sequence)
         .then((res) => {
-          console.log(res);
           let sequence_data = [];
 
           for (let key in res.data.result) {
@@ -64,7 +63,6 @@ export const fetchSequence = (sequence) => {
             });
           }
 
-          console.log(sequence_data);
           dispatch(fetchSequenceSuccess(sequence_data));
         })
         .catch((seqErr) => {

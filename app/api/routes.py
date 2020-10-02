@@ -5653,7 +5653,5 @@ class SequencesAPItypon(Resource):
             number_alleles_loci = int(
                 locus_result["results"]["bindings"][0]['count']['value'])
 
-            print(sequence_info, flush=True)
-
             return {'result': sequence_info,
                     'number_alleles_loci': number_alleles_loci}, 200
