@@ -46,7 +46,7 @@ services:
         ipv4_address: 172.19.1.2
 
   pgadmin4:
-    image: dpage/pgadmin4:4.25
+    image: dpage/pgadmin4:4.26
     restart: always
     container_name: "pgadmin4"
     environment:
@@ -56,9 +56,8 @@ services:
       - "5050:80"
     depends_on:
       - postgres_compose
-    # volumes:
-    #   - ./self_certs/cert.pem:/certs/server.cert
-    #   - ./self_certs/key.pem:/certs/server.key
+    volumes:
+      - pgadmin:/pgadmin4/pgadmin
     networks:
       test:
 
@@ -95,6 +94,22 @@ services:
     networks:
       test:
         ipv4_address: 172.19.1.4
+        
+  flower_container:
+    image: mher/flower:0.9.4
+    container_name: flower_container
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - FLOWER_URL_PREFIX=flower
+      - FLOWER_PORT=5555
+    ports:
+      - "5555:5555"
+    depends_on:
+      - "redis"
+    volumes:
+      - flower:/usr/local/lib/python3.8/site-packages/flower
+    networks:
+      test:
 
   loci_worker:
     build:
@@ -174,6 +189,16 @@ services:
       - ./prodigal_training_files:/var/www/my-app/prodigal_training_files
       - ./frontend_react/chewie_ns/certs-data/:/data/letsencrypt/
       - /etc/letsencrypt/:/etc/letsencrypt/
+      - type: volume
+        source: flower
+        target: /var/www/flower
+        volume:
+          nocopy: true
+      - type: volume
+        source: pgadmin
+        target: /var/www/pgadmin
+        volume:
+          nocopy: true
     ports:
       - "80:80"
       - "443:443"
@@ -190,3 +215,8 @@ networks:
       driver: default
       config:
         - subnet: 172.19.0.0/16
+
+volumes:
+ pgadmin:
+ flower:
+        
