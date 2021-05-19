@@ -24,6 +24,8 @@ COPY ./mime.types /etc/nginx/
 
 COPY ./cors.conf /etc/nginx/
 
+COPY ./general-security-headers.conf /etc/nginx/
+
 COPY ./nginx.conf /etc/nginx/
 
 COPY ./.htpasswd /etc/nginx/
